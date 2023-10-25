@@ -22,6 +22,12 @@ function AddProduct() {
     const response = await axios.post("/products", product);
 
     showToast(response.data.message);
+    setBrand("");
+    setName("");
+    setPrice("");
+    setDescription("");
+    productImage("");
+    
   };
   return (
     <div>

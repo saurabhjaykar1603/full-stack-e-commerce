@@ -63,14 +63,17 @@ function Home() {
                 <span
                   style={{
                     position: "absolute",
-                    top: "10px",
-                    left: "10px",
+                    top: "0px",
+                    right: "0px",
                     fontSize: "15px",
                     cursor: "pointer",
                     borderRadius: "5%",
                     padding: "6px",
                     backgroundColor: "white",
-                    boxShadow: "0px 0px 9px 1px gray",
+                  borderBottom : "1px solid red",
+                  borderLeft : "1px solid red",
+                  borderTopRightRadius: "5px",   
+                  
                   }}
                   onClick={() => {
                     deleteProducts(_id);
