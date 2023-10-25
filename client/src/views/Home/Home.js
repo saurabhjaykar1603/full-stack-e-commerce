@@ -12,15 +12,23 @@ function Home() {
   useEffect(() => {
     loadProducts();
   }, []);
+
+  // delete products
+
   return (
     <>
       <h1 className="text-center">Home Page</h1>
 
       <div className="d-flex justify-content-evenly flex-wrap">
         {products?.map((product, i) => {
-          const { name, description, productImage, brand, price } = product;
+          const { _id, name, description, productImage, brand, price } =
+            product;
           return (
-            <div key={i} className="card shadow" style={{ width: "18rem", border: "1px solid tomato" }}>
+            <div
+              key={i}
+              className="card shadow"
+              style={{ width: "18rem", border: "1px solid tomato" }}
+            >
               <div className="card-body text-center">
                 <img
                   src={productImage}
@@ -34,9 +42,11 @@ function Home() {
                 <p className="m-0 mt-2">{brand}</p>
                 <div className="container mt-2 bg-warning py-1 w-75  rounded">
                   <a
-                    href="/product/:${_id}"
                     className="m-0 mt-1 text-dark"
                     target="_blank"
+                    onClick={() => {
+                      window.open(`/product-details/${_id}`, "_blank");
+                    }}
                   >
                     View details
                   </a>

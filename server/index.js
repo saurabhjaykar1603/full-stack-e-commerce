@@ -41,11 +41,12 @@ app.get("/products", async (req, res) => {
 });
 
 // get rq for read indiviual products
-app.get("/product", async (req, res) => {
-  const { name } = req.query;
-  const productName = await Product.findOne({ name: name });
+app.get("/product/:id", async (req, res) => {
+  // const { name } = req.query;
+  const { id } = req.params;
+  const findOnedata = await Product.findById({ _id : id });
 
-  if (productName == null) {
+  if (findOnedata == null) {
     return res.json({
       success: false,
       message: "Product not found",
@@ -53,7 +54,7 @@ app.get("/product", async (req, res) => {
   }
   res.json({
     success: true,
-    data: productName,
+    data: findOnedata,
     message: "Product found successfully",
   });
 });
