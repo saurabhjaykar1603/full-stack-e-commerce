@@ -14,6 +14,12 @@ function Home() {
   }, []);
 
   // delete products
+  const deleteProducts = async (_id) => {
+    const response = await axios.delete(`/product/${_id}`);
+    if (response?.data?.message) {
+      loadProducts();
+    }
+  };
 
   return (
     <>
@@ -29,7 +35,10 @@ function Home() {
               className="card shadow"
               style={{ width: "18rem", border: "1px solid tomato" }}
             >
-              <div className="card-body text-center">
+              <div
+                className="card-body text-center"
+                style={{ position: "relative" }}
+              >
                 <img
                   src={productImage}
                   alt=""
@@ -51,6 +60,24 @@ function Home() {
                     View details
                   </a>
                 </div>
+                <span
+                  style={{
+                    position: "absolute",
+                    top: "10px",
+                    left: "10px",
+                    fontSize: "15px",
+                    cursor: "pointer",
+                    borderRadius: "5%",
+                    padding: "6px",
+                    backgroundColor: "white",
+                    boxShadow: "0px 0px 9px 1px gray",
+                  }}
+                  onClick={() => {
+                    deleteProducts(_id);
+                  }}
+                >
+                  ❌
+                </span>
               </div>
             </div>
           );
